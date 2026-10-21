@@ -13,9 +13,9 @@ jobs:
       run: |
         cd app/src/main/jni
         $ANDROID_NDK_HOME/ndk-build NDK_PROJECT_PATH=. APP_BUILD_SCRIPT=Android.mk NDK_APPLICATION_MK=Application.mk APP_ABI=arm64-v8a
-        find /home/runner/work -name "*.so" -exec cp {} $GITHUB_WORKSPACE/ \;
+        cp libs/arm64-v8a/libImGui.so $GITHUB_WORKSPACE/
     - name: Upload .so
       uses: actions/upload-artifact@v4
       with:
         name: libMenu
-        path: "*.so"
+        path: "libImGui.so"
